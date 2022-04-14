@@ -56,17 +56,20 @@ class ClassDeclarationSniff implements Sniff
         $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($curlyBrace - 1), $stackPtr, true);
         $classLine   = $tokens[$lastContent]['line'];
         $braceLine   = $tokens[$curlyBrace]['line'];
-        if ($braceLine === $classLine) {
-            $phpcsFile->recordMetric($stackPtr, 'Class opening brace placement', 'same line');
-            $error = 'Opening brace of a %s must be on the line after the definition';
-            $fix   = $phpcsFile->addFixableError($error, $curlyBrace, 'OpenBraceNewLine', $errorData);
+        if ($braceLine === ($classLine+1)) {
+            $phpcsFile->recordMetric($stackPtr, 'Class opening brace placement', 'next line');
+            $error = 'Opening brace of a %s must be on the same line as the definition';
+            $fix   = $phpcsFile->addFixableError($error, $curlyBrace, 'OpenBraceWrongLine', $errorData);
             if ($fix === true) {
                 $phpcsFile->fixer->beginChangeset();
-                if ($tokens[($curlyBrace - 1)]['code'] === T_WHITESPACE) {
-                    $phpcsFile->fixer->replaceToken(($curlyBrace - 1), '');
+                for ($i = ($curlyBrace - 1); $i > $lastContent; $i--) {
+                    if ($tokens[$i]['line'] === ($tokens[$curlyBrace]['line'])) {
+                        break;
+                    }
+        
+                    $phpcsFile->fixer->replaceToken($i, '');
                 }
-
-                $phpcsFile->fixer->addNewlineBefore($curlyBrace);
+    
                 $phpcsFile->fixer->endChangeset();
             }
 
