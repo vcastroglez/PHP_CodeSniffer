@@ -10,11 +10,11 @@
  * based on how these names were tokenized in PHP 5/7.
  *
  * {@link https://wiki.php.net/rfc/namespaced_names_as_token}
- * {@link https://github.com/squizlabs/PHP_CodeSniffer/issues/3041}
+ * {@link https://github.com/vcastroglez/PHP_CodeSniffer/issues/3041}
  *
  * @author    Juliette Reinders Folmer <phpcs_nospam@adviesenzo.nl>
  * @copyright 2020 Squiz Pty Ltd (ABN 77 084 670 600)
- * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @license   https://github.com/vcastroglez/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
  */
 
 namespace PHP_CodeSniffer\Tests\Core\Tokenizer;

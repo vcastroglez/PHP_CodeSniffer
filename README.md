@@ -2,16 +2,16 @@
 
 PHP_CodeSniffer is a set of two PHP scripts; the main `phpcs` script that tokenizes PHP, JavaScript and CSS files to detect violations of a defined coding standard, and a second `phpcbf` script to automatically correct coding standard violations. PHP_CodeSniffer is an essential development tool that ensures your code remains clean and consistent.
 
-[![Build Status](https://github.com/squizlabs/PHP_CodeSniffer/workflows/Validate/badge.svg?branch=master)](https://github.com/squizlabs/PHP_CodeSniffer/actions)
-[![Build Status](https://github.com/squizlabs/PHP_CodeSniffer/workflows/Test/badge.svg?branch=master)](https://github.com/squizlabs/PHP_CodeSniffer/actions)
-[![Code consistency](http://squizlabs.github.io/PHP_CodeSniffer/analysis/squizlabs/PHP_CodeSniffer/grade.svg)](http://squizlabs.github.io/PHP_CodeSniffer/analysis/squizlabs/PHP_CodeSniffer)
-[![Join the chat at https://gitter.im/squizlabs/PHP_CodeSniffer](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/squizlabs/PHP_CodeSniffer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://github.com/vcastroglez/PHP_CodeSniffer/workflows/Validate/badge.svg?branch=master)](https://github.com/vcastroglez/PHP_CodeSniffer/actions)
+[![Build Status](https://github.com/vcastroglez/PHP_CodeSniffer/workflows/Test/badge.svg?branch=master)](https://github.com/vcastroglez/PHP_CodeSniffer/actions)
+[![Code consistency](http://vcastroglez.github.io/PHP_CodeSniffer/analysis/vcastroglez/PHP_CodeSniffer/grade.svg)](http://vcastroglez.github.io/PHP_CodeSniffer/analysis/vcastroglez/PHP_CodeSniffer)
+[![Join the chat at https://gitter.im/vcastroglez/PHP_CodeSniffer](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vcastroglez/PHP_CodeSniffer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Requirements
 
-PHP_CodeSniffer requires PHP version 5.4.0 or greater, although individual sniffs may have additional requirements such as external applications and scripts. See the [Configuration Options manual page](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options) for a list of these requirements.
+PHP_CodeSniffer requires PHP version 5.4.0 or greater, although individual sniffs may have additional requirements such as external applications and scripts. See the [Configuration Options manual page](https://github.com/vcastroglez/PHP_CodeSniffer/wiki/Configuration-Options) for a list of these requirements.
 
-If you're using PHP_CodeSniffer as part of a team, or you're running it on a [CI](https://en.wikipedia.org/wiki/Continuous_integration) server, you may want to configure your project's settings [using a configuration file](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file).
+If you're using PHP_CodeSniffer as part of a team, or you're running it on a [CI](https://en.wikipedia.org/wiki/Continuous_integration) server, you may want to configure your project's settings [using a configuration file](https://github.com/vcastroglez/PHP_CodeSniffer/wiki/Advanced-Usage#using-a-default-configuration-file).
 
 
 ## Installation
@@ -19,12 +19,12 @@ If you're using PHP_CodeSniffer as part of a team, or you're running it on a [CI
 The easiest way to get started with PHP_CodeSniffer is to download the Phar files for each of the commands:
 ```
 # Download using curl
-curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+curl -OL https://vcastroglez.github.io/PHP_CodeSniffer/phpcs.phar
+curl -OL https://vcastroglez.github.io/PHP_CodeSniffer/phpcbf.phar
 
 # Or download using wget
-wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar
+wget https://vcastroglez.github.io/PHP_CodeSniffer/phpcs.phar
+wget https://vcastroglez.github.io/PHP_CodeSniffer/phpcbf.phar
 
 # Then test the downloaded PHARs
 php phpcs.phar -h
@@ -34,16 +34,16 @@ php phpcbf.phar -h
 ### Composer
 If you use Composer, you can install PHP_CodeSniffer system-wide with the following command:
 ```bash
-composer global require "squizlabs/php_codesniffer=*"
+composer global require "vcastroglez/php_codesniffer=*"
 ```
 Make sure you have the composer bin dir in your PATH. The default value is `~/.composer/vendor/bin/`, but you can check the value that you need to use by running `composer global config bin-dir --absolute`.
 
-Or alternatively, include a dependency for `squizlabs/php_codesniffer` in your `composer.json` file. For example:
+Or alternatively, include a dependency for `vcastroglez/php_codesniffer` in your `composer.json` file. For example:
 
 ```json
 {
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.*"
+        "vcastroglez/php_codesniffer": "3.*"
     }
 }
 ```
@@ -72,7 +72,7 @@ pear install PHP_CodeSniffer
 ### Git Clone
 You can also download the PHP_CodeSniffer source and run the `phpcs` and `phpcbf` commands directly from the Git clone:
 ```bash
-git clone https://github.com/squizlabs/PHP_CodeSniffer.git
+git clone https://github.com/vcastroglez/PHP_CodeSniffer.git
 cd PHP_CodeSniffer
 php bin/phpcs -h
 php bin/phpcbf -h
@@ -94,15 +94,15 @@ phpcs --standard=PSR12 /path/to/code-directory
 
 If PHP_CodeSniffer finds any coding standard errors, a report will be shown after running the command.
 
-Full usage information and example reports are available on the [usage page](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage).
+Full usage information and example reports are available on the [usage page](https://github.com/vcastroglez/PHP_CodeSniffer/wiki/Usage).
 
 ## Documentation
 
-The documentation for PHP_CodeSniffer is available on the [Github wiki](https://github.com/squizlabs/PHP_CodeSniffer/wiki).
+The documentation for PHP_CodeSniffer is available on the [Github wiki](https://github.com/vcastroglez/PHP_CodeSniffer/wiki).
 
 ## Issues
 
-Bug reports and feature requests can be submitted on the [Github Issue Tracker](https://github.com/squizlabs/PHP_CodeSniffer/issues).
+Bug reports and feature requests can be submitted on the [Github Issue Tracker](https://github.com/vcastroglez/PHP_CodeSniffer/issues).
 
 ## Contributing
 

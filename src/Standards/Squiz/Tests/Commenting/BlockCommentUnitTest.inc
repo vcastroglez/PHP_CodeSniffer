@@ -239,7 +239,7 @@ $y = 10 + /* test */ -2;
 
 /*
  * When the comment contains PHPCS annotations, the comment closer was being misidentified.
- * See: {@link https://github.com/squizlabs/PHP_CodeSniffer/issues/1918}
+ * See: {@link https://github.com/vcastroglez/PHP_CodeSniffer/issues/1918}
  * @phpcs:disable Standard.Category.Sniff
  */
 
