@@ -57,9 +57,9 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                     }
 
                     if (Common::isSnakeName($objVarName, false, true, false) === false) {
-                        $error = 'Member variable "%s" is not in valid camel caps format';
+                        $error = 'Member variable "%s" is not in valid snake caps format';
                         $data  = [$originalVarName];
-                        $phpcsFile->addError($error, $var, 'MemberNotCamelCaps', $data);
+                        $phpcsFile->addError($error, $var, 'MemberNotSnakeCaps', $data);
                     }
                 }//end if
             }//end if
@@ -75,9 +75,9 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             }
 
             if (Common::isSnakeName($objVarName, false, true, false) === false) {
-                $error = 'Member variable "%s" is not in valid camel caps format';
+                $error = 'Member variable "%s" is not in valid snake caps format';
                 $data  = [$tokens[$stackPtr]['content']];
-                $phpcsFile->addError($error, $stackPtr, 'MemberNotCamelCaps', $data);
+                $phpcsFile->addError($error, $stackPtr, 'MemberNotSnakeCaps', $data);
             }
 
             return;
@@ -95,7 +95,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
         }
 
         if (Common::isSnakeName($varName, false, true, false) === false) {
-            $error = 'Variable "%s" is not in valid camel caps format';
+            $error = 'Variable "%s" is not in valid snake caps format';
             $data  = [$originalVarName];
             $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
         }
@@ -149,8 +149,8 @@ class ValidVariableNameSniff extends AbstractVariableSniff
         $varName = ltrim($varName, '_');
 
         if (Common::isSnakeName($varName, false, true, false) === false) {
-            $error = 'Member variable "%s" is not in valid camel caps format';
-            $phpcsFile->addError($error, $stackPtr, 'MemberNotCamelCaps', $errorData);
+            $error = 'Member variable "%s" is not in valid snake caps format';
+            $phpcsFile->addError($error, $stackPtr, 'MemberNotSnakeCaps', $errorData);
         }
 
     }//end processMemberVar()
@@ -177,7 +177,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                 }
 
                 if (Common::isSnakeName($varName, false, true, false) === false) {
-                    $error = 'Variable "%s" is not in valid camel caps format';
+                    $error = 'Variable "%s" is not in valid snake caps format';
                     $data  = [$varName];
                     $phpcsFile->addError($error, $stackPtr, 'StringNotCamelCaps', $data);
                 }
