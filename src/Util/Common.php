@@ -528,6 +528,11 @@ class Common
         if (strpos($string, ' ') !== false) {
             return false;
         }
+        
+        if($string!==strtolower($string)){
+            //only lower case allowed >:)
+            return false;
+        }
 
         $validName = true;
         $nameBits  = explode('_', $string);
