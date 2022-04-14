@@ -184,16 +184,6 @@ class ComparisonOperatorUsageSniff implements Sniff
                 if ($foundOps > $requiredOps) {
                     $foundOps = $requiredOps;
                 }
-
-                // If we get to here and we have not found the right number of
-                // comparison operators, then we must have had an implicit
-                // true operation i.e., if ($a) instead of the required
-                // if ($a === true), so let's add an error.
-                if ($requiredOps !== $foundOps) {
-                    $error = 'Implicit true comparisons prohibited; use === TRUE instead';
-                    $phpcsFile->addError($error, $stackPtr, 'ImplicitTrue');
-                    $foundOps++;
-                }
             }
 
             if (isset(Tokens::$emptyTokens[$type]) === false) {
@@ -202,11 +192,6 @@ class ComparisonOperatorUsageSniff implements Sniff
         }//end for
 
         $requiredOps++;
-
-        if ($foundOps < $requiredOps && $requiredOps !== $foundBooleans) {
-            $error = 'Implicit true comparisons prohibited; use === TRUE instead';
-            $phpcsFile->addError($error, $stackPtr, 'ImplicitTrue');
-        }
 
     }//end process()
 
