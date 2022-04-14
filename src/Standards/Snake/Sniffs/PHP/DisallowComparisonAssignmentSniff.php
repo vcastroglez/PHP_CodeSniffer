@@ -24,7 +24,7 @@ class DisallowComparisonAssignmentSniff implements Sniff
      */
     public function register()
     {
-        return [T_EQUAL];
+        return [];
 
     }//end register()
 
