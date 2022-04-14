@@ -23,10 +23,7 @@ class DoubleQuoteUsageSniff implements Sniff
      */
     public function register()
     {
-        return [
-            T_CONSTANT_ENCAPSED_STRING,
-            T_DOUBLE_QUOTED_STRING,
-        ];
+        return [];
 
     }//end register()
 
