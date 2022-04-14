@@ -78,7 +78,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                         $objVarName = substr($objVarName, 1);
                     }
 
-                    if (Common::isCamelCaps($objVarName, false, true, false) === false) {
+                    if (Common::isUnderscoreName($objVarName, false, true, false) === false) {
                         $error = 'Variable "%s" is not in valid camel caps format';
                         $data  = array($originalVarName);
                         $phpcsFile->addError($error, $var, 'NotCamelCaps', $data);
@@ -106,7 +106,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             }
         }
 
-        if (Common::isCamelCaps($varName, false, true, false) === false) {
+        if (Common::isUnderscoreName($varName, false, true, false) === false) {
             $error = 'Variable "%s" is not in valid camel caps format';
             $data  = array($originalVarName);
             $phpcsFile->addError($error, $stackPtr, 'NotCamelCaps', $data);
@@ -159,7 +159,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
             }
         }
 
-        if (Common::isCamelCaps($varName, false, $public, false) === false) {
+        if (Common::isUnderscoreName($varName, false, $public, false) === false) {
             $error = 'Member variable "%s" is not in valid camel caps format';
             $phpcsFile->addError($error, $stackPtr, 'MemberNotCamelCaps', $errorData);
         }
@@ -202,7 +202,7 @@ class ValidVariableNameSniff extends AbstractVariableSniff
                     continue;
                 }
 
-                if (Common::isCamelCaps($varName, false, true, false) === false) {
+                if (Common::isUnderscoreName($varName, false, true, false) === false) {
                     $error = 'Variable "%s" is not in valid camel caps format';
                     $data  = array($varName);
                     $phpcsFile->addError($error, $stackPtr, 'StringNotCamelCaps', $data);
