@@ -94,9 +94,9 @@ class OpeningFunctionBraceBsdAllmanSniff implements Sniff
             $metricType = 'Closure';
         }
 
-        if ($lineDifference === 0) {
-            $error = 'Opening brace should be on a new line';
-            $fix   = $phpcsFile->addFixableError($error, $openingBrace, 'BraceOnSameLine');
+        if ($lineDifference === 1) {
+            $error = 'Opening brace should be on the same line';
+            $fix   = $phpcsFile->addFixableError($error, $openingBrace, 'BraceOnDiffLine');
             if ($fix === true) {
                 $hasTrailingAnnotation = false;
                 for ($nextLine = ($openingBrace + 1); $nextLine < $phpcsFile->numTokens; $nextLine++) {
@@ -121,10 +121,8 @@ class OpeningFunctionBraceBsdAllmanSniff implements Sniff
                         $phpcsFile->fixer->replaceToken(($openingBrace - 1), '');
                     }
 
-                    $phpcsFile->fixer->addNewlineBefore($openingBrace);
                 } else {
                     $phpcsFile->fixer->replaceToken($openingBrace, '');
-                    $phpcsFile->fixer->addNewlineBefore($nextLine);
                     $phpcsFile->fixer->addContentBefore($nextLine, '{');
 
                     if ($tokens[$indent]['code'] === T_WHITESPACE) {
@@ -137,7 +135,7 @@ class OpeningFunctionBraceBsdAllmanSniff implements Sniff
 
             $phpcsFile->recordMetric($stackPtr, "$metricType opening brace placement", 'same line');
         } else if ($lineDifference > 1) {
-            $error = 'Opening brace should be on the line after the declaration; found %s blank line(s)';
+            $error = 'Opening brace should be on the same line of the declaration; found %s blank line(s)';
             $data  = [($lineDifference - 1)];
 
             $prevNonWs = $phpcsFile->findPrevious(T_WHITESPACE, ($openingBrace - 1), $closeBracket, true);
@@ -149,7 +147,7 @@ class OpeningFunctionBraceBsdAllmanSniff implements Sniff
                 $fix = $phpcsFile->addFixableError($error, $openingBrace, 'BraceSpacing', $data);
                 if ($fix === true) {
                     $phpcsFile->fixer->beginChangeset();
-                    for ($i = $openingBrace; $i > $prev; $i--) {
+                    for ($i = $openingBrace; $i >= $prev; $i--) {
                         if ($tokens[$i]['line'] === $tokens[$openingBrace]['line']) {
                             if ($tokens[$i]['column'] === 1) {
                                 $phpcsFile->fixer->addNewLineBefore($i);
