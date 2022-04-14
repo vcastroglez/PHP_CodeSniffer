@@ -23,7 +23,7 @@ class DisallowInlineIfSniff implements Sniff
      */
     public function register()
     {
-        return [T_INLINE_THEN];
+        return [];
 
     }//end register()
 
