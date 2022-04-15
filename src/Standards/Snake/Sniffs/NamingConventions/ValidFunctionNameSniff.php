@@ -28,6 +28,7 @@ class ValidFunctionNameSniff extends PEARValidFunctionNameSniff
      */
     protected function processTokenOutsideScope(File $phpcsFile, $stackPtr)
     {
+        file_put_contents('debug_file_sniffer.json',json_encode($stackPtr));
         $functionName = $phpcsFile->getDeclarationName($stackPtr);
         if ($functionName === null) {
             return;
