@@ -29,6 +29,7 @@ class ComparisonOperatorUsageSniff implements Sniff
         T_IS_GREATER_OR_EQUAL => true,
         T_IS_SMALLER_OR_EQUAL => true,
         T_INSTANCEOF          => true,
+        T_BOOLEAN_NOT         => true
     ];
 
     /**
@@ -38,7 +39,7 @@ class ComparisonOperatorUsageSniff implements Sniff
      */
     private static $invalidOps = [
         T_IS_EQUAL     => '===',
-        T_IS_NOT_EQUAL => '!=='
+        T_IS_NOT_EQUAL => '!==',
     ];
 
 
