@@ -272,6 +272,11 @@ class SwitchDeclarationSniff implements Sniff
             }//end if
         }//end while
 
+        if ($foundDefault === false) {
+            $error = 'All SWITCH statements must contain a DEFAULT case';
+            $phpcsFile->addError($error, $stackPtr, 'MissingDefault');
+        }
+
         if ($tokens[$switch['scope_closer']]['column'] !== $switch['column']) {
             $error = 'Closing brace of SWITCH statement must be aligned with SWITCH keyword';
             $phpcsFile->addError($error, $switch['scope_closer'], 'CloseBraceAlign');
