@@ -38,8 +38,7 @@ class ComparisonOperatorUsageSniff implements Sniff
      */
     private static $invalidOps = [
         T_IS_EQUAL     => '===',
-        T_IS_NOT_EQUAL => '!==',
-        T_BOOLEAN_NOT  => '=== FALSE',
+        T_IS_NOT_EQUAL => '!=='
     ];
 
 

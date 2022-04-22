@@ -57,7 +57,10 @@ class AllSniffs
         }
 
         $installedStandards = self::getInstalledStandardDetails();
-
+        $review = ['SNAKE'];
+        $installedStandards = array_filter($installedStandards,function($item) use ($review){
+            return in_array(strtoupper($item['name']),$review);
+        });
         foreach ($installedStandards as $standard => $details) {
             Autoload::addSearchPath($details['path'], $details['namespace']);
 
@@ -75,7 +78,8 @@ class AllSniffs
 
             foreach ($di as $file) {
                 // Skip hidden files.
-                if (substr($file->getFilename(), 0, 1) === '.') {
+                $first_char = substr($file->getFilename(), 0, 1);
+                if ($first_char === '.' || $first_char === '_') {
                     continue;
                 }
 
