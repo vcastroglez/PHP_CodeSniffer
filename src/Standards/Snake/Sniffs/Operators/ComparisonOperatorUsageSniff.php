@@ -50,13 +50,6 @@ class ComparisonOperatorUsageSniff implements Sniff
      */
     public function register()
     {
-        return [
-            T_IF,
-            T_ELSEIF,
-            T_INLINE_THEN,
-            T_WHILE,
-            T_FOR,
-        ];
 
     }//end register()
 
